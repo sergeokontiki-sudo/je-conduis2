@@ -1,349 +1,242 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Je Conduis - Neuf : Réparations, Assurance, Achat & Vente</title>
+<!-- saved from url=(0014)about:internet -->
+<html lang="fr" data-theme="ink-gold"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Je Conduis - Neuf : Réparations, Assurance, Achat &amp; Vente</title>
   <meta name="description" content="Je Conduis : Réparations, assurance, achat et vente de voitures neuves, essais et nouveautés.">
-  <meta name="theme-color" content="#062b16">
+  <meta name="theme-color" content="#111827">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
 
   <style>
+
+    /* =========================
+       JE CONDUIS — TEMPLATE FIXE
+       Thèmes cohérents + switcher cliquable
+       CTA "S’abonner" : couleurs douces, sans bordure
+       ========================= */
+
     :root{
-      --primary:#062b16;
-      --secondary:#4A7C59;
-      --gold:#D4AF37;
-      --bg:#FFFFFF;
-      --bg-soft:#F6F7F8;
-      --text:#1F2328;
-      --muted:#5B6672;
-      --border:#E7EAEE;
-      --shadow: 0 12px 40px rgba(0,0,0,.10);
+      /* Neutres */
+      --bg:#ffffff;
+      --surface:#f6f7f8;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+
+      /* Identité (pilotée par thème) */
+      --ink:#0f172a;
+      --accent:#d4af37;
+      --accent-2:#475569;
+
+      /* CTA */
+      --cta-bg:#fbf3d7;
+      --cta-text:var(--ink);
+
+      /* Layout */
+      --shadow: 0 12px 40px rgba(15,23,42,.10);
       --radius:14px;
       --container:1200px;
+
+      /* Couleurs composants */
+      --topbar-bg: var(--surface);
+      --topbar-text: #334155;
+
+      --logo-bg: #ffffff;
+      --logo-title: var(--text);
+      --logo-tagline: var(--muted);
+
+      --nav-bg: #ffffff;
+      --nav-link: var(--ink);
+      --nav-hover-bg: var(--ink);
+      --nav-hover-text: #ffffff;
+
+      --badge-bg: var(--ink);
+      --badge-text: #ffffff;
+
+      --section-alt-bg: var(--surface);
+      --h2-underline: var(--accent);
+
+      --footer-bg: #111827;
+      --footer-text: #e5e7eb;
+
+      /* Switcher */
+      --switcher-bg: #ffffff;
+      --switcher-border: #e5e7eb;
+      --switcher-text: #111827;
     }
+
+    /* =========================
+       THEMES
+       ========================= */
+
+    :root[data-theme="ink-gold"]{
+      --ink:#0f172a;
+      --accent:#d4af37;
+      --accent-2:#475569;
+      --h2-underline: var(--accent);
+
+      --cta-bg:#fbf3d7;
+      --cta-text:#111827;
+    }
+
+    /* Sport red devient "soft gold" (moins vif) */
+    :root[data-theme="sport-red"]{
+      --ink:#0b1220;
+      --accent:#eab676;
+      --accent-2:#334155;
+
+      --topbar-bg: var(--ink);
+      --topbar-text:#e5e7eb;
+      --badge-bg: var(--accent);
+      --h2-underline: var(--accent);
+
+      --cta-bg:#eab676;
+      --cta-text:#111827;
+    }
+
+    /* Electric blue devient "soft cyan" + ink #1E4B6F */
+    :root[data-theme="electric-blue"]{
+      --ink:#1E4B6F;
+      --accent:#67bed9;
+      --accent-2:#1E4B6F;
+
+      --surface:#eff6ff;
+      --section-alt-bg: var(--surface);
+      --border:#dbeafe;
+
+      --topbar-bg: var(--ink);
+      --topbar-text:#dbeafe;
+      --badge-bg: var(--accent);
+      --h2-underline: var(--accent);
+
+      --cta-bg:#67bed9;
+      --cta-text:#1E4B6F;
+    }
+
+    :root[data-theme="graphite-copper"]{
+      --ink:#111827;
+      --accent:#b45309;
+      --accent-2:#374151;
+
+      --surface:#f3f4f6;
+      --section-alt-bg: var(--surface);
+      --h2-underline: var(--accent);
+      --footer-bg:#0b0f17;
+
+      --cta-bg:#f6e6d6;
+      --cta-text:#111827;
+    }
+
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
     a{color:inherit;text-decoration:none}
 
-    .topbar{
-      background:linear-gradient(135deg,#F0F8F0,#E8F5E8);
-      color:var(--primary);
-      border-bottom:2px solid var(--secondary);
-      padding:.75rem 1rem;
-      text-align:center;
-      font-size:.95rem;
-    }
+    .topbar{background:var(--topbar-bg);color:var(--topbar-text);border-bottom:1px solid var(--border);padding:.45rem 1rem;text-align:center;font-size:.92rem}
 
-    /* Logo au-dessus du menu */
-    .logo-section{
-      background:var(--primary);
-      padding:1.8rem 0 2rem;
-      text-align:center;
-      position:relative;
-    }
-    .logo-section:after{
-      content:"";
-      position:absolute;left:0;right:0;bottom:0;height:4px;
-      background:linear-gradient(90deg,var(--secondary),var(--gold),var(--secondary));
-    }
+    .logo-section{background:var(--logo-bg);padding:.85rem 0 1rem;text-align:center;position:relative;border-bottom:1px solid var(--border)}
+    .logo-section:after{display:none}
+
     .container{max-width:var(--container);margin:0 auto;padding:0 1.25rem}
-    .brand{
-      display:inline-block;
-      color:#fff;
-    }
-    .brand-title{
-      font-family:"Roboto Condensed",sans-serif;
-      font-weight:900;
-      font-size:3.2rem;
-      letter-spacing:-1.5px;
-      line-height:1;
-    }
-    .brand-tagline{
-      margin-top:.35rem;
-      color:rgba(255,255,255,.92);
-      font-style:italic;
-      font-size:1.05rem;
-    }
+    .brand{display:inline-block;color:var(--logo-title)}
+    .brand-title{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:2.35rem;letter-spacing:-1.2px;line-height:1}
+    .brand-tagline{margin-top:.25rem;color:var(--logo-tagline);font-style:italic;font-size:.98rem}
 
-    /* Menu sous le logo */
-    .nav-wrap{
-      background:#fff;
-      position:sticky;
-      top:0;
-      z-index:50;
-      box-shadow:0 2px 12px rgba(6,43,22,.10);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      padding:.9rem 0;
-    }
-    .nav-menu{
-      display:flex;
-      list-style:none;
-      gap:.75rem;
-      flex-wrap:wrap;
-      align-items:center;
-      font-family:"Roboto Condensed",sans-serif;
-      font-weight:700;
-    }
-    .nav-menu a{
-      display:inline-block;
-      color:var(--primary);
-      padding:.55rem .9rem;
-      border-radius:999px;
-      transition:.2s ease;
-      border:1px solid transparent;
-      white-space:nowrap;
-    }
-    .nav-menu a:hover{
-      background:var(--primary);
-      color:#fff;
-    }
-    .nav-cta{
-      display:flex;
-      gap:.6rem;
-      align-items:center;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:999px;
-      padding:.55rem .95rem;
-      border:1px solid var(--border);
-      background:#fff;
-      color:var(--primary);
-      font-weight:700;
-      font-family:"Roboto Condensed",sans-serif;
-      cursor:pointer;
-      transition:.2s ease;
-      white-space:nowrap;
-    }
-    .btn.primary{
-      background:var(--gold);
-      border-color:var(--gold);
-      color:var(--primary);
-    }
+    .nav-wrap{background:var(--nav-bg);position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(15,23,42,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.60rem 0}
+
+    .nav-menu{display:flex;list-style:none;gap:.75rem;flex-wrap:wrap;align-items:center;font-family:"Roboto Condensed",sans-serif;font-weight:700}
+    .nav-menu a{display:inline-block;color:var(--nav-link);padding:.45rem .75rem;border-radius:999px;transition:.2s ease;border:1px solid transparent;white-space:nowrap}
+    .nav-menu a:hover{background:var(--nav-hover-bg);color:var(--nav-hover-text)}
+
+    .nav-cta{display:flex;gap:.6rem;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:.48rem .80rem;border:1px solid var(--border);background:#fff;color:var(--ink);font-weight:800;font-family:"Roboto Condensed",sans-serif;cursor:pointer;transition:.2s ease;white-space:nowrap}
+
+    /* CTA S'abonner : sans bordure */
+    .btn.primary{background:var(--cta-bg);border:none;color:var(--cta-text);font-weight:900;box-shadow:0 8px 20px rgba(15,23,42,.10)}
+    .btn.primary:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(15,23,42,.14)}
+    .btn.primary:active{transform:translateY(0);box-shadow:0 6px 14px rgba(15,23,42,.10)}
+
     .btn:hover{transform:translateY(-1px)}
-    .burger{
-      display:none;
-      width:42px;height:38px;
-      border-radius:10px;
-      border:1px solid var(--border);
-      background:#fff;
-      cursor:pointer;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:5px;
-    }
-    .burger span{width:20px;height:2px;background:var(--primary);display:block}
 
-    /* Hero */
-    .hero{
-      background:linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),
-        url("https://via.placeholder.com/1920x700/F6F7F8/062b16?text=JE+CONDUIS+-+HERO") center/cover;
-      padding:3.2rem 0;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.6fr .9fr;
-      gap:2rem;
-      align-items:stretch;
-    }
-    .hero-card{
-      background:var(--bg);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-    .hero-media{
-      height:320px;
-      background:url("https://via.placeholder.com/1200x700/FFFFFF/062b16?text=Article+%C3%80+la+une+(Neuf)") center/cover;
-    }
+    .burger{display:none;width:42px;height:38px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+    .burger span{width:20px;height:2px;background:var(--ink);display:block}
+
+    .hero{background:linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),url("https://via.placeholder.com/1920x700/F6F7F8/111827?text=JE+CONDUIS+-+HERO") center/cover;padding:3.2rem 0}
+    .hero-grid{display:grid;grid-template-columns:1.6fr .9fr;gap:2rem;align-items:stretch}
+
+    .hero-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .hero-media{height:320px;background:url("https://via.placeholder.com/1200x700/FFFFFF/111827?text=Article+%C3%80+la+une+(Neuf)") center/cover}
     .hero-content{padding:1.6rem 1.6rem 1.8rem}
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
-      background:var(--primary);
-      color:#fff;
-      border-radius:999px;
-      padding:.28rem .7rem;
-      font-size:.85rem;
-      font-weight:700;
-      font-family:"Roboto Condensed",sans-serif;
-    }
-    .hero-title{
-      font-family:"Roboto Condensed",sans-serif;
-      font-weight:900;
-      font-size:2.1rem;
-      line-height:1.2;
-      margin-top:.9rem;
-    }
-    .meta{color:var(--secondary);font-weight:700;margin-top:.7rem;font-size:.95rem}
+
+    .badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--badge-bg);color:var(--badge-text);border-radius:999px;padding:.28rem .7rem;font-size:.85rem;font-weight:800;font-family:"Roboto Condensed",sans-serif}
+
+    .hero-title{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:2.1rem;line-height:1.2;margin-top:.9rem}
+    .meta{color:var(--accent-2);font-weight:800;margin-top:.7rem;font-size:.95rem}
     .lead{color:var(--muted);margin-top:.7rem}
 
-    .side-panel{
-      background:var(--bg-soft);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:1.4rem;
-      box-shadow:0 10px 30px rgba(0,0,0,.06);
-    }
-    .side-title{
-      font-family:"Roboto Condensed",sans-serif;
-      font-weight:900;
-      font-size:1.35rem;
-      color:var(--primary);
-      margin-bottom:1rem;
-    }
-    .live-item{
-      display:flex;
-      justify-content:space-between;
-      gap:1rem;
-      padding:.9rem 0;
-      border-top:1px solid rgba(74,124,89,.18);
-    }
+    .side-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;box-shadow:0 10px 30px rgba(15,23,42,.06)}
+    .side-title{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:1.35rem;color:var(--ink);margin-bottom:1rem}
+
+    .live-item{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 0;border-top:1px solid var(--border)}
     .live-item:first-of-type{border-top:none;padding-top:0}
-    .live-time{
-      color:var(--secondary);
-      font-weight:700;
-      font-family:"Roboto Condensed",sans-serif;
-      white-space:nowrap;
-    }
+    .live-time{color:var(--accent-2);font-weight:800;font-family:"Roboto Condensed",sans-serif;white-space:nowrap}
     .live-text{color:var(--text);font-weight:600}
 
-    /* Sections articles */
     .section{padding:3.4rem 0}
-    .section.alt{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:1rem;
-      margin-bottom:1.3rem;
-    }
-    .h2{
-      font-family:"Roboto Condensed",sans-serif;
-      font-weight:900;
-      font-size:2rem;
-      color:var(--primary);
-      position:relative;
-    }
-    .h2:after{
-      content:"";
-      display:block;
-      width:64px;height:4px;
-      background:var(--secondary);
-      margin-top:.55rem;
-      border-radius:6px;
-    }
-    .seeall{
-      color:var(--secondary);
-      font-weight:800;
-      font-family:"Roboto Condensed",sans-serif;
-    }
+    .section.alt{background:var(--section-alt-bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1.2rem;
-    }
-    .card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      overflow:hidden;
-      transition:.2s ease;
-      position:relative;
-    }
-    .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(6,43,22,.12);border-color:rgba(6,43,22,.25)}
-    .card-media{
-      height:170px;
-      background:#eaeef2;
-      background-size:cover;
-      background-position:center;
-    }
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.3rem}
+
+    .h2{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:2rem;color:var(--ink);position:relative}
+    .h2:after{content:"";display:block;width:64px;height:4px;background:var(--h2-underline);margin-top:.55rem;border-radius:6px}
+
+    .seeall{color:var(--accent-2);font-weight:900;font-family:"Roboto Condensed",sans-serif}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.2s ease;position:relative}
+    .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(15,23,42,.12);border-color:rgba(15,23,42,.18)}
+
+    .card-media{height:170px;background:#eaeef2;background-size:cover;background-position:center}
     .card-body{padding:1.1rem 1.1rem 1.2rem}
-    .card-kicker{
-      color:var(--secondary);
-      font-weight:800;
-      font-family:"Roboto Condensed",sans-serif;
-      font-size:.95rem;
-    }
-    .card-title{
-      margin-top:.35rem;
-      font-weight:800;
-      font-size:1.15rem;
-      line-height:1.25;
-      color:var(--text);
-    }
+
+    .card-kicker{color:var(--accent-2);font-weight:900;font-family:"Roboto Condensed",sans-serif;font-size:.95rem}
+    .card-title{margin-top:.35rem;font-weight:900;font-size:1.15rem;line-height:1.25;color:var(--text)}
     .card-desc{margin-top:.55rem;color:var(--muted);font-size:.98rem}
 
-    /* Footer */
-    footer{
-      background:#141617;
-      color:#E6E6E6;
-      padding:3rem 0;
-      margin-top:1rem;
-    }
-    .footer-links{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:.9rem 1.1rem;
-      list-style:none;
-      margin-bottom:1.3rem;
-    }
-    .footer-links a{
-      border:1px solid rgba(255,255,255,.18);
-      padding:.55rem .9rem;
-      border-radius:999px;
-      color:#E6E6E6;
-      font-weight:700;
-      font-family:"Roboto Condensed",sans-serif;
-    }
+    footer{background:var(--footer-bg);color:var(--footer-text);padding:3rem 0;margin-top:1rem}
+    .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.9rem 1.1rem;list-style:none;margin-bottom:1.3rem}
+    .footer-links a{border:1px solid rgba(255,255,255,.18);padding:.55rem .9rem;border-radius:999px;color:var(--footer-text);font-weight:800;font-family:"Roboto Condensed",sans-serif}
 
-    /* Mobile */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
-      .grid{grid-template-columns:repeat(2,1fr)}
-    }
+    .theme-switcher{position:fixed;right:18px;bottom:18px;z-index:9999;background:var(--switcher-bg);border:1px solid var(--switcher-border);border-radius:14px;padding:.75rem;box-shadow:0 18px 55px rgba(0,0,0,.18);width:min(360px, calc(100vw - 36px))}
+    .theme-switcher-title{font-family:"Roboto Condensed",sans-serif;font-weight:900;letter-spacing:-.2px;font-size:.98rem;color:var(--switcher-text);margin-bottom:.65rem}
+    .theme-grid{display:flex;gap:.5rem;flex-wrap:wrap}
+    .theme-btn{display:flex;align-items:center;gap:.55rem;padding:.55rem .7rem;border-radius:999px;border:1px solid var(--switcher-border);background:#fff;cursor:pointer;font-weight:900;font-family:"Roboto Condensed",sans-serif;color:#111827}
+    .theme-btn[aria-pressed="true"]{border-color:#111827}
+    .theme-dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+
+    @media (max-width: 980px){.hero-grid{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width: 720px){
-      .brand-title{font-size:2.4rem}
+      .brand-title{font-size:2.1rem}
       .nav-menu{display:none}
-      .nav-menu.active{
-        display:flex;
-        flex-direction:column;
-        align-items:stretch;
-        position:absolute;
-        left:0;right:0;
-        top:100%;
-        background:#fff;
-        border-bottom:1px solid var(--border);
-        padding:1rem 1.25rem;
-      }
+      .nav-menu.active{display:flex;flex-direction:column;align-items:stretch;position:absolute;left:0;right:0;top:100%;background:var(--nav-bg);border-bottom:1px solid var(--border);padding:1rem 1.25rem}
       .nav{position:relative}
       .burger{display:flex}
       .grid{grid-template-columns:1fr}
       .hero-title{font-size:1.75rem}
       .hero-media{height:240px}
     }
+
   </style>
 </head>
 
 <body>
   <div class="topbar">
-    Guides 100% neuf : réparations, assurance, achat & vente — essais et nouveautés 2026.
+    Guides 100% neuf : réparations, assurance, achat &amp; vente — essais et nouveautés 2026.
   </div>
 
   <!-- LOGO AU-DESSUS DU MENU -->
@@ -406,7 +299,7 @@
           </div>
           <div class="live-item">
             <div class="live-time">10:55</div>
-            <div class="live-text">Réparations : pièces & main-d’œuvre, comment payer moins.</div>
+            <div class="live-text">Réparations : pièces &amp; main-d’œuvre, comment payer moins.</div>
           </div>
           <div class="live-item">
             <div class="live-time">09:40</div>
@@ -427,7 +320,7 @@
 
       <div class="grid">
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Nouveaut%C3%A9+1');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Nouveaut%C3%A9+1&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Nouveautés</div>
             <div class="card-title">Nouveau SUV : ce qu’il faut retenir (motorisations, finitions)</div>
@@ -436,7 +329,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Nouveaut%C3%A9+2');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Nouveaut%C3%A9+2&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Nouveautés</div>
             <div class="card-title">Citadine 2026 : autonomie/consommation, notre verdict</div>
@@ -445,7 +338,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Nouveaut%C3%A9+3');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Nouveaut%C3%A9+3&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Nouveautés</div>
             <div class="card-title">Hybridation : les nouveautés attendues cette année</div>
@@ -466,7 +359,7 @@
 
       <div class="grid">
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Essai+1');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=Essai+1&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Essais</div>
             <div class="card-title">Essai : compacte 2026 (confort, bruit, conso)</div>
@@ -475,7 +368,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Essai+2');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=Essai+2&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Essais</div>
             <div class="card-title">Prise en main : électrique 2026 (recharge, autonomie réelle)</div>
@@ -484,7 +377,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Essai+3');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=Essai+3&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Essais</div>
             <div class="card-title">SUV familial : tenue de route, coffre, vie à bord</div>
@@ -505,7 +398,7 @@
 
       <div class="grid">
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Achat+Neuf+1');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Achat+Neuf+1&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Achat</div>
             <div class="card-title">Configurer sa voiture neuve : options utiles vs gadgets</div>
@@ -514,7 +407,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Achat+Neuf+2');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Achat+Neuf+2&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Achat</div>
             <div class="card-title">Financement neuf : LOA, LLD, crédit — comment trancher</div>
@@ -523,7 +416,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Achat+Neuf+3');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Achat+Neuf+3&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Achat</div>
             <div class="card-title">Livraison : délais, documents, check-list avant de signer</div>
@@ -544,7 +437,7 @@
 
       <div class="grid">
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Vente+Neuf+1');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=Vente+Neuf+1&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Vente</div>
             <div class="card-title">Remises : comment négocier une voiture neuve en 2026</div>
@@ -553,7 +446,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Vente+Neuf+2');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=Vente+Neuf+2&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Vente</div>
             <div class="card-title">Mandataire vs concession : quelle différence en neuf</div>
@@ -562,7 +455,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Vente+Neuf+3');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=Vente+Neuf+3&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Vente</div>
             <div class="card-title">Extension de garantie : quand ça vaut le coup</div>
@@ -583,7 +476,7 @@
 
       <div class="grid">
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Assurance+1');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Assurance+1&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Assurance</div>
             <div class="card-title">Tous risques vs tiers : le bon choix pour une voiture neuve</div>
@@ -592,7 +485,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Assurance+2');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Assurance+2&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Assurance</div>
             <div class="card-title">Franchise : comment elle change la facture</div>
@@ -601,7 +494,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Assurance+3');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/F6F7F8/111827?text=Assurance+3&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Assurance</div>
             <div class="card-title">Assurance + LOA/LLD : points de vigilance</div>
@@ -622,7 +515,7 @@
 
       <div class="grid">
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=R%C3%A9parations+1');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=R%C3%A9parations+1&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Réparations</div>
             <div class="card-title">Révision d’un véhicule neuf : quand et combien</div>
@@ -631,7 +524,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=R%C3%A9parations+2');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=R%C3%A9parations+2&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Réparations</div>
             <div class="card-title">Garantie constructeur : ce qui est couvert (ou non)</div>
@@ -640,7 +533,7 @@
         </article>
 
         <article class="card">
-          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=R%C3%A9parations+3');"></div>
+          <div class="card-media" style="background-image:url(&#39;https://via.placeholder.com/900x600/FFFFFF/111827?text=R%C3%A9parations+3&#39;);"></div>
           <div class="card-body">
             <div class="card-kicker">Réparations</div>
             <div class="card-title">Pneus, freins, batteries : les coûts à anticiper</div>
@@ -666,10 +559,44 @@
     </div>
   </footer>
 
+
+  <!-- Switcher thèmes -->
+  <div class="theme-switcher" aria-label="Choisir un thème">
+    <div class="theme-switcher-title">Thèmes (clique pour changer)</div>
+    <div class="theme-grid">
+      <button class="theme-btn" data-theme="ink-gold" aria-pressed="true" type="button"><span class="theme-dot" style="background:#0f172a"></span> Ink + Gold</button>
+      <button class="theme-btn" data-theme="sport-red" aria-pressed="false" type="button"><span class="theme-dot" style="background:#eab676"></span> Sport (soft)</button>
+      <button class="theme-btn" data-theme="electric-blue" aria-pressed="false" type="button"><span class="theme-dot" style="background:#67bed9"></span> Electric (soft)</button>
+      <button class="theme-btn" data-theme="graphite-copper" aria-pressed="false" type="button"><span class="theme-dot" style="background:#b45309"></span> Graphite + Copper</button>
+    </div>
+  </div>
+
+
   <script>
     function toggleMenu(){
       document.getElementById("navMenu").classList.toggle("active");
     }
+
+    (function(){
+      const root = document.documentElement;
+      const buttons = document.querySelectorAll('.theme-btn');
+      const KEY = 'jc_theme';
+
+      function applyTheme(theme){
+        root.setAttribute('data-theme', theme);
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.theme === theme)));
+        try{ localStorage.setItem(KEY, theme); }catch(e){}
+      }
+
+      let saved = null;
+      try{ saved = localStorage.getItem(KEY); }catch(e){}
+      if(saved){ applyTheme(saved); }
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => applyTheme(btn.dataset.theme));
+      });
+    })();
   </script>
-</body>
-</html>
+
+
+</body></html>

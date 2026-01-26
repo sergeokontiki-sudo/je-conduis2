@@ -1,111 +1,226 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="fr" data-theme="ink-gold">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Garantie constructeur : l’essentiel - Je Conduis</title>
-  <meta name="description" content="Comprendre la garantie constructeur sur une voiture neuve : couverture, exclusions, entretien, recours." />
-  <meta name="theme-color" content="#062b16" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garantie constructeur : ce qui est couvert — Je Conduis</title>
+  <meta name="description" content="Article Réparations : comprendre la garantie constructeur et les bonnes pratiques d’entretien." />
+  <meta name="theme-color" content="#111827" />
+  <link rel="preconnect" href="https://fonts.googleapis.com/" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Condensed:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
+
+    /* =========================
+       JE CONDUIS — TEMPLATE FIXE
+       Thèmes cohérents + switcher cliquable
+       CTA "S’abonner" : couleurs douces, sans bordure
+       + Lead magnet (PDF/newsletter)
+       ========================= */
+
     :root{
-      --primary:#062b16; --secondary:#4A7C59; --gold:#D4AF37;
-      --bg:#FFFFFF; --bg-soft:#F6F7F8; --text:#1F2328; --muted:#5B6672;
-      --border:#E7EAEE; --shadow: 0 12px 40px rgba(0,0,0,.10);
-      --radius:14px; --container:1200px;
+      --bg:#ffffff;
+      --surface:#f6f7f8;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+
+      --ink:#0f172a;
+      --accent:#d4af37;
+      --accent-2:#475569;
+
+      --cta-bg:#fbf3d7;
+      --cta-text:var(--ink);
+
+      --shadow: 0 12px 40px rgba(15,23,42,.10);
+      --radius:14px;
+      --container:1200px;
+
+      --topbar-bg: var(--surface);
+      --topbar-text: #334155;
+
+      --logo-bg: #ffffff;
+      --logo-title: var(--text);
+      --logo-tagline: var(--muted);
+
+      --nav-bg: #ffffff;
+      --nav-link: var(--ink);
+      --nav-hover-bg: var(--ink);
+      --nav-hover-text: #ffffff;
+
+      --badge-bg: var(--ink);
+      --badge-text: #ffffff;
+
+      --section-alt-bg: var(--surface);
+      --h2-underline: var(--accent);
+
+      --footer-bg: #111827;
+      --footer-text: #e5e7eb;
+
+      --switcher-bg: #ffffff;
+      --switcher-border: #e5e7eb;
+      --switcher-text: #111827;
     }
+
+    :root[data-theme="ink-gold"]{
+      --ink:#0f172a;
+      --accent:#d4af37;
+      --accent-2:#475569;
+      --h2-underline: var(--accent);
+
+      --cta-bg:#fbf3d7;
+      --cta-text:#111827;
+    }
+
+    :root[data-theme="sport-red"]{
+      --ink:#0b1220;
+      --accent:#eab676;
+      --accent-2:#334155;
+
+      --topbar-bg: var(--ink);
+      --topbar-text:#e5e7eb;
+      --badge-bg: var(--accent);
+      --h2-underline: var(--accent);
+
+      --cta-bg:#eab676;
+      --cta-text:#111827;
+    }
+
+    :root[data-theme="electric-blue"]{
+      --ink:#1E4B6F;
+      --accent:#67bed9;
+      --accent-2:#1E4B6F;
+
+      --surface:#eff6ff;
+      --section-alt-bg: var(--surface);
+      --border:#dbeafe;
+
+      --topbar-bg: var(--ink);
+      --topbar-text:#dbeafe;
+      --badge-bg: var(--accent);
+      --h2-underline: var(--accent);
+
+      --cta-bg:#67bed9;
+      --cta-text:#1E4B6F;
+    }
+
+    :root[data-theme="graphite-copper"]{
+      --ink:#111827;
+      --accent:#b45309;
+      --accent-2:#374151;
+
+      --surface:#f3f4f6;
+      --section-alt-bg: var(--surface);
+      --h2-underline: var(--accent);
+      --footer-bg:#0b0f17;
+
+      --cta-bg:#f6e6d6;
+      --cta-text:#111827;
+    }
+
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    body{font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
     a{color:inherit;text-decoration:none}
+
+    .topbar{background:var(--topbar-bg);color:var(--topbar-text);border-bottom:1px solid var(--border);padding:.45rem 1rem;text-align:center;font-size:.92rem}
+    .logo-section{background:var(--logo-bg);padding:.85rem 0 1rem;text-align:center;border-bottom:1px solid var(--border)}
+
     .container{max-width:var(--container);margin:0 auto;padding:0 1.25rem}
+    .brand{display:inline-block;color:var(--logo-title)}
+    .brand-title{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:2.35rem;letter-spacing:-1.2px;line-height:1}
+    .brand-tagline{margin-top:.25rem;color:var(--logo-tagline);font-style:italic;font-size:.98rem}
 
-    .topbar{background:linear-gradient(135deg,#F0F8F0,#E8F5E8);color:var(--primary);border-bottom:2px solid var(--secondary);padding:.75rem 1rem;text-align:center;font-size:.95rem}
-    .logo-section{background:var(--primary);padding:1.8rem 0 2rem;text-align:center;position:relative}
-    .logo-section:after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--secondary),var(--gold),var(--secondary))}
-    .brand-title{font-weight:900;font-size:3.0rem;letter-spacing:-1.2px;line-height:1;color:#fff}
-    .brand-tagline{margin-top:.35rem;color:rgba(255,255,255,.92);font-style:italic;font-size:1.05rem}
+    .nav-wrap{background:var(--nav-bg);position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(15,23,42,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.60rem 0}
 
-    .nav-wrap{background:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(6,43,22,.10)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;position:relative}
-    .nav-menu{display:flex;list-style:none;gap:.75rem;flex-wrap:wrap;align-items:center;font-weight:800}
-    .nav-menu a{display:inline-block;color:var(--primary);padding:.55rem .9rem;border-radius:999px;transition:.2s ease;border:1px solid transparent;white-space:nowrap}
-    .nav-menu a:hover{background:var(--primary);color:#fff}
+    .nav-menu{display:flex;list-style:none;gap:.75rem;flex-wrap:wrap;align-items:center;font-family:"Roboto Condensed",sans-serif;font-weight:700}
+    .nav-menu a{display:inline-block;color:var(--nav-link);padding:.45rem .75rem;border-radius:999px;transition:.2s ease;border:1px solid transparent;white-space:nowrap}
+    .nav-menu a:hover{background:var(--nav-hover-bg);color:var(--nav-hover-text)}
+    .nav-menu a.active{background:rgba(15,23,42,.08);border-color:rgba(15,23,42,.10)}
+
+    .nav-cta{display:flex;gap:.6rem;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:.48rem .80rem;border:1px solid var(--border);background:#fff;color:var(--ink);font-weight:800;font-family:"Roboto Condensed",sans-serif;cursor:pointer;transition:.2s ease;white-space:nowrap}
+    .btn.primary{background:var(--cta-bg);border:none;color:var(--cta-text);font-weight:900;box-shadow:0 8px 20px rgba(15,23,42,.10)}
+    .btn.primary:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(15,23,42,.14)}
+    .btn.secondary{background:#fff;border:1px solid var(--border);color:var(--ink)}
+
     .burger{display:none;width:42px;height:38px;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
-    .burger span{width:20px;height:2px;background:var(--primary);display:block}
+    .burger span{width:20px;height:2px;background:var(--ink);display:block}
 
-    .section{padding:2.6rem 0}
-    .breadcrumb{font-size:.95rem;color:var(--muted);margin-bottom:1rem}
+    .section{padding:2.8rem 0}
 
-    .article{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .article-cover{height:360px;background:url("https://via.placeholder.com/1600x900/FFFFFF/062b16?text=Blog+Je+Conduis") center/cover}
-    .article-body{padding:1.6rem}
-    .article-body h1{font-size:2.2rem;line-height:1.2;letter-spacing:-.6px}
-    .meta{color:var(--secondary);font-weight:900;margin-top:.6rem}
-    .article-body h2{margin-top:1.4rem;font-size:1.35rem}
-    .article-body p{margin-top:.8rem;color:#2b2f36;max-width:75ch}
+    .badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--badge-bg);color:var(--badge-text);border-radius:999px;padding:.28rem .7rem;font-size:.85rem;font-weight:800;font-family:"Roboto Condensed",sans-serif}
 
-    /* LISTES A PUCES */
-    .article-body ul{margin-top:.7rem;padding-left:1.2rem;max-width:75ch}
-    .article-body li{margin:.35rem 0;color:#2b2f36}
+    .article-layout{display:grid;grid-template-columns:1.6fr .9fr;gap:1.25rem;align-items:start}
+    .panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 
-    /* CTA (Lead Magnet) */
-    .cta{
-      margin-top:1.2rem;
-      border:1px solid rgba(6,43,22,.18);
-      background:linear-gradient(135deg, rgba(74,124,89,.10), rgba(212,175,55,.12));
-      border-radius:16px;
-      padding:1.1rem;
-    }
-    .cta .cta-title{font-weight:950;color:var(--primary);font-size:1.1rem;letter-spacing:-.2px}
-    .cta .cta-desc{margin-top:.45rem;color:var(--muted);max-width:75ch}
-    .cta .cta-actions{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:.9rem}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:.60rem .95rem;border-radius:999px;
-      border:1px solid var(--border);background:#fff;color:var(--primary);
-      font-weight:900;cursor:pointer;
-    }
-    .btn.primary{background:var(--gold);border-color:var(--gold)}
-    .btn.dark{background:var(--primary);border-color:var(--primary);color:#fff}
-    .btn:hover{transform:translateY(-1px)}
-    .cta small{display:block;margin-top:.55rem;color:var(--muted)}
-    .cta-form{
-      display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.75rem
-    }
-    .field{
-      flex:1 1 220px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:.65rem .85rem;
-      background:#fff;
-      outline:none;
-    }
+    .ratio{position:relative;width:100%;padding-top:56.25%;background:#0b1220}
+    .ratio iframe,.ratio video{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-    .back{display:inline-block;margin-top:1.2rem;color:var(--secondary);font-weight:900}
+    .prose{padding:1.25rem 1.25rem 1.45rem}
+    .prose h1{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:2.2rem;line-height:1.15}
+    .prose h2{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:1.4rem;margin-top:1.2rem;color:var(--ink)}
+    .prose p{margin-top:.7rem;color:#1f2937}
 
-    footer{background:#141617;color:#E6E6E6;padding:2.4rem 0;margin-top:1rem}
+    .video-meta{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.75rem}
+    .meta{color:var(--accent-2);font-weight:800;font-family:"Roboto Condensed",sans-serif}
+
+    .callout{margin-top:1rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem}
+    .callout strong{font-family:"Roboto Condensed",sans-serif}
+
+    .lead-magnet{margin-top:1.1rem;background:linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.85)),
+      radial-gradient(1000px 280px at 10% 10%, rgba(103,190,217,.20), transparent 60%),
+      radial-gradient(1000px 280px at 90% 0%, rgba(234,182,118,.22), transparent 60%);
+      border:1px solid var(--border);border-radius:14px;padding:1rem}
+    .lead-magnet h3{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:1.25rem;color:var(--ink)}
+    .lead-magnet p{margin-top:.35rem;color:var(--muted)}
+    .lead-magnet .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.75rem}
+
+    .prose ul{margin-top:.65rem;padding-left:1.1rem}
+    .prose li{margin-top:.35rem;color:#1f2937}
+
+    .panel-body{padding:1.25rem 1.25rem 1.35rem}
+    .h2{font-family:"Roboto Condensed",sans-serif;font-weight:900;font-size:1.5rem;color:var(--ink)}
+    .list{display:flex;flex-direction:column;gap:.75rem;margin-top:.9rem}
+    .mini{display:grid;grid-template-columns:150px 1fr;gap:.85rem;align-items:center;border-top:1px solid var(--border);padding-top:.85rem}
+    .mini:first-child{border-top:none;padding-top:0}
+    .thumb{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0b1220}
+    .thumb .ratio{padding-top:56.25%}
+    .mini-title{font-weight:900;line-height:1.25}
+    .mini-desc{color:var(--muted);font-size:.95rem;margin-top:.2rem}
+
+    footer{background:var(--footer-bg);color:var(--footer-text);padding:2.5rem 0;margin-top:1rem}
     .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.9rem 1.1rem;list-style:none;margin-bottom:1.1rem}
-    .footer-links a{border:1px solid rgba(255,255,255,.18);padding:.55rem .9rem;border-radius:999px;color:#E6E6E6;font-weight:900}
-    .small{opacity:.9;text-align:center}
+    .footer-links a{border:1px solid rgba(255,255,255,.18);padding:.55rem .9rem;border-radius:999px;color:var(--footer-text);font-weight:800;font-family:"Roboto Condensed",sans-serif}
 
-    @media (max-width:720px){
-      .brand-title{font-size:2.3rem}
-      .nav-menu{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--border);padding:1rem 1.25rem;flex-direction:column;align-items:stretch}
-      .nav-menu.active{display:flex}
-      .burger{display:flex}
-      .article-cover{height:240px}
-      .cta-actions{flex-direction:column;align-items:stretch}
-      .btn{width:100%}
+    .theme-switcher{position:fixed;right:18px;bottom:18px;z-index:9999;background:var(--switcher-bg);border:1px solid var(--switcher-border);border-radius:14px;padding:.75rem;box-shadow:0 18px 55px rgba(0,0,0,.18);width:min(360px, calc(100vw - 36px))}
+    .theme-switcher-title{font-family:"Roboto Condensed",sans-serif;font-weight:900;letter-spacing:-.2px;font-size:.98rem;color:var(--switcher-text);margin-bottom:.65rem}
+    .theme-grid{display:flex;gap:.5rem;flex-wrap:wrap}
+    .theme-btn{display:flex;align-items:center;gap:.55rem;padding:.55rem .7rem;border-radius:999px;border:1px solid var(--switcher-border);background:#fff;cursor:pointer;font-weight:900;font-family:"Roboto Condensed",sans-serif;color:#111827}
+    .theme-btn[aria-pressed="true"]{border-color:#111827}
+    .theme-dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+
+    @media (max-width: 980px){
+      .article-layout{grid-template-columns:1fr}
     }
+    @media (max-width: 720px){
+      .brand-title{font-size:2.1rem}
+      .nav-menu{display:none}
+      .nav-menu.active{display:flex;flex-direction:column;align-items:stretch;position:absolute;left:0;right:0;top:100%;background:var(--nav-bg);border-bottom:1px solid var(--border);padding:1rem 1.25rem}
+      .nav{position:relative}
+      .burger{display:flex}
+      .mini{grid-template-columns:1fr}
+    }
+
   </style>
 </head>
-
 <body>
-  <div class="topbar">Un article Je Conduis — uniquement voitures neuves.</div>
+
+  <div class="topbar">Guides 100% neuf : réparations, assurance, achat &amp; vente — essais et nouveautés 2026.</div>
 
   <section class="logo-section">
     <div class="container">
-      <a href="index.html" aria-label="Accueil Je Conduis">
+      <a class="brand" href="index.html" aria-label="Accueil Je Conduis">
         <div class="brand-title">Je Conduis</div>
         <div class="brand-tagline">Le guide français du neuf</div>
       </a>
@@ -116,7 +231,7 @@
     <div class="container">
       <nav class="nav" aria-label="Navigation principale">
         <ul class="nav-menu" id="navMenu">
-          <li><a href="reparations.html">Réparations</a></li>
+          <li><a href="reparations.html" class="active">Réparations</a></li>
           <li><a href="assurance.html">Assurance</a></li>
           <li><a href="achat.html">Achat</a></li>
           <li><a href="vente.html">Vente</a></li>
@@ -124,108 +239,133 @@
           <li><a href="nouveautes.html">Nouveautés</a></li>
         </ul>
 
-        <button class="burger" type="button" aria-label="Ouvrir le menu" onclick="toggleMenu()">
-          <span></span><span></span><span></span>
-        </button>
+        <div class="nav-cta">
+          <a class="btn" href="newsletter.html">Newsletter</a>
+          <a class="btn primary" href="abonnement.html">S’abonner</a>
+          <button class="burger" type="button" aria-label="Ouvrir le menu" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </nav>
     </div>
   </div>
 
-  <main class="section">
+  <section class="section" aria-label="Article avec vidéo">
     <div class="container">
-      <div class="breadcrumb">Accueil / Réparations / Article</div>
+      <div class="article-layout">
 
-      <article class="article">
-        <div class="article-cover" role="img" aria-label="Image de couverture"></div>
+        <article class="panel">
+          <div class="ratio">
+            <!-- Remplace par ta vidéo principale -->
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"
+              title="Vidéo : Garantie constructeur"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
 
-        <div class="article-body">
-          <h1>Garantie constructeur : ce qui est couvert (et ce qui ne l’est pas)</h1>
-          <div class="meta">Réparations • Lecture : 6 min</div>
+          <div class="prose">
+            <span class="badge">RÉPARATIONS • VIDÉO</span>
+            <h1>Garantie constructeur : ce qui est couvert (et comment éviter les refus)</h1>
 
-          <!-- CTA #1 (haut d'article) -->
-          <div class="cta" aria-label="Call to action - checklist">
-            <div class="cta-title">Télécharge la checklist gratuite “Réception d’une voiture neuve”</div>
-            <p class="cta-desc">Une page claire, à imprimer, pour vérifier votre véhicule le jour de la livraison.</p>
-            <ul>
-              <li>Contrôles extérieurs (carrosserie, vitres, jantes).</li>
-              <li>Contrôles intérieurs (options, écran, connectivité).</li>
-              <li>Documents à exiger (garantie, carnet, factures).</li>
-            </ul>
-            <div class="cta-actions">
-              <a class="btn primary" href="lead-magnet-checklist.html">Télécharger la checklist</a>
-              <a class="btn" href="reparations.html">Voir plus d’articles Réparations</a>
+            <div class="video-meta">
+              <div class="meta">Mis à jour : aujourd’hui</div>
+              <div class="meta">•</div>
+              <div class="meta">Temps de lecture : 4 min</div>
             </div>
-            <small>Gratuit • Sans carte bancaire • 30 secondes</small>
-          </div>
 
-          <p>Quand on achète une voiture neuve, la garantie constructeur rassure, mais elle comporte des limites. L’objectif : savoir quoi vérifier, quoi conserver et comment réagir en cas de panne.</p>
+            <p>Objectif : comprendre ce que la garantie couvre réellement sur un véhicule neuf et quelles preuves conserver pour éviter un litige.</p>
 
-          <h2>1) Ce que la garantie couvre le plus souvent</h2>
-          <p>En général, elle peut couvrir des défauts de fabrication et certaines pannes mécaniques/électroniques, selon les conditions du constructeur.</p>
-          <ul>
-            <li>Défauts d’assemblage et dysfonctionnements anormaux.</li>
-            <li>Pannes électroniques (selon conditions, pièces, durée).</li>
-            <li>Main-d’œuvre et pièces (selon réseau et prise en charge).</li>
-          </ul>
-
-          <h2>2) Les exclusions fréquentes</h2>
-          <p>Beaucoup d’exclusions tournent autour de l’usure et des usages non conformes.</p>
-          <ul>
-            <li>Pièces d’usure : pneus, plaquettes/disques, balais d’essuie-glace.</li>
-            <li>Dommages liés à une mauvaise utilisation ou à un choc.</li>
-            <li>Entretien non conforme (retard de révision, fluide inadapté, etc.).</li>
-          </ul>
-
-          <!-- CTA #2 (milieu d'article) -->
-          <div class="cta" aria-label="Call to action - newsletter">
-            <div class="cta-title">Reçois nos alertes “coûts cachés du neuf” (1 email/semaine)</div>
-            <p class="cta-desc">Des conseils rapides pour éviter les mauvaises surprises (garantie, entretien, assurance, options).</p>
-
-            <form class="cta-form" action="newsletter.html" method="get">
-              <input class="field" type="email" name="email" placeholder="Votre email" required>
-              <button class="btn dark" type="submit">Je m’inscris</button>
-            </form>
-
-            <small>Tu peux te désinscrire à tout moment.</small>
-          </div>
-
-          <h2>3) L’entretien : le point qui fait la différence</h2>
-          <p>Pour rester serein, adopte une routine simple.</p>
-          <ul>
-            <li>Conserver toutes les factures et ordres de réparation.</li>
-            <li>Respecter les échéances (temps et kilométrage).</li>
-            <li>Noter les symptômes (date, contexte, message au tableau de bord).</li>
-          </ul>
-
-          <h2>4) En cas de litige</h2>
-          <p>Le plus efficace est de documenter et formaliser.</p>
-          <ul>
-            <li>Demander un diagnostic écrit et daté.</li>
-            <li>Rassembler preuves : photos, vidéos, messages d’erreur.</li>
-            <li>Garder l’historique des échanges (mail, devis, factures).</li>
-          </ul>
-
-          <!-- CTA #3 (fin d'article) -->
-          <div class="cta" aria-label="Call to action - comparateur">
-            <div class="cta-title">Besoin d’un devis assurance pour une voiture neuve ?</div>
-            <p class="cta-desc">Compare rapidement “tous risques”, “valeur à neuf”, franchises et options utiles.</p>
-            <ul>
-              <li>Devis en 2 minutes.</li>
-              <li>Focus garanties vraiment utiles en neuf.</li>
-              <li>Checklist des questions à poser avant de signer.</li>
-            </ul>
-            <div class="cta-actions">
-              <a class="btn primary" href="assurance.html">Voir nos guides Assurance</a>
-              <a class="btn" href="contact.html">Demander un conseil</a>
+            <div class="callout">
+              <strong>À retenir</strong><br/>
+              Conserve les factures, respecte les intervalles (date/km) et fais noter clairement les opérations effectuées sur l’ordre de réparation.
             </div>
-            <small>Objectif : transformer la lecture en action (simple et rapide).</small>
-          </div>
 
-          <a class="back" href="reparations.html">← Retour à Réparations</a>
-        </div>
-      </article>
+            <!-- CTA lead magnet (PDF + newsletter) -->
+            <div class="lead-magnet" aria-label="Téléchargement PDF et newsletter">
+              <h3>Ressource gratuite : checklist PDF + newsletter</h3>
+              <p>Télécharge la checklist “Garantie &amp; entretien (voiture neuve)” et reçois nos alertes (rappels, coûts, conseils atelier).</p>
+              <div class="actions">
+                <a class="btn primary" href="lead-magnet-garantie.pdf">Télécharger le PDF</a>
+                <a class="btn secondary" href="newsletter.html">S’inscrire à la newsletter</a>
+              </div>
+            </div>
+
+            <h2>1) Ce que la garantie couvre souvent</h2>
+            <p>En général : défauts de fabrication, pannes de pièces non liées à l’usure normale, et certains éléments électroniques (selon marque/contrat).</p>
+            <ul>
+              <li>Moteur/boîte : prise en charge selon diagnostic et conditions constructeur.</li>
+              <li>Électronique : calculateurs, capteurs, écrans (selon exclusions).</li>
+              <li>Climatisation : fuites/compresseur possibles, selon contrat et usage.</li>
+            </ul>
+
+            <h2>2) Les exclusions fréquentes</h2>
+            <p>Usure (plaquettes, pneus), mauvaise utilisation, entretien non conforme, modifications, ou absence de justificatifs sont les causes classiques de refus.</p>
+            <ul>
+              <li>Révision hors délai (date ou kilométrage), même de quelques jours.</li>
+              <li>Factures manquantes ou libellés trop vagues (“entretien” sans détail).</li>
+              <li>Pièces non homologuées/modifications (reprog, accessoires électriques).</li>
+            </ul>
+
+            <h2>3) La bonne méthode au garage</h2>
+            <p>Avant de signer : demande le détail (diagnostic, pièces, main‑d’œuvre) et fais écrire les symptômes exacts signalés.</p>
+            <ul>
+              <li>Demander un devis écrit avant toute opération payante.</li>
+              <li>Conserver l’ordre de réparation + photos si défaut visible.</li>
+              <li>Noter la date/km au dépôt et à la restitution du véhicule.</li>
+            </ul>
+
+            <p style="margin-top:1rem;color:var(--muted)">Note : remplace ces textes par tes vrais contenus quand tu publies les articles.</p>
+          </div>
+        </article>
+
+        <aside class="panel">
+          <div class="panel-body">
+            <div class="h2">Vidéos liées</div>
+            <div class="list">
+              <a class="mini" href="#">
+                <div class="thumb"><div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/ysz5S6PUM-U" title="Vidéo liée 1" allowfullscreen></iframe></div></div>
+                <div>
+                  <div class="mini-title">Révision : preuves et bonnes pratiques</div>
+                  <div class="mini-desc">5 min • Réparations</div>
+                </div>
+              </a>
+              <a class="mini" href="#">
+                <div class="thumb"><div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/jNQXAC9IVRw" title="Vidéo liée 2" allowfullscreen></iframe></div></div>
+                <div>
+                  <div class="mini-title">Coûts d’entretien la première année</div>
+                  <div class="mini-desc">6 min • Réparations</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="h2" style="margin-top:1.2rem">À lire aussi</div>
+            <div class="list">
+              <a class="mini" href="#">
+                <div class="thumb" style="background:#fff"><div class="ratio" style="background:#eaeef2"></div></div>
+                <div>
+                  <div class="mini-title">Facture atelier : les lignes à vérifier</div>
+                  <div class="mini-desc">Guide • 3 min</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="lead-magnet" style="margin-top:1.2rem" aria-label="CTA sidebar">
+              <h3>Recevoir le PDF + les alertes</h3>
+              <p>1 e-mail/semaine, pas de spam.</p>
+              <div class="actions">
+                <a class="btn primary" href="lead-magnet-garantie.pdf">PDF</a>
+                <a class="btn secondary" href="newsletter.html">Newsletter</a>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
     </div>
-  </main>
+  </section>
 
   <footer>
     <div class="container">
@@ -236,15 +376,45 @@
         <li><a href="cgu.html">CGU</a></li>
         <li><a href="plan-du-site.html">Plan du site</a></li>
       </ul>
-      <div class="small">© 2026 Je Conduis</div>
+      <div style="text-align:center;opacity:.9;">© 2026 Je Conduis — Contenu orienté voitures neuves.</div>
     </div>
   </footer>
 
+  <div class="theme-switcher" aria-label="Choisir un thème">
+    <div class="theme-switcher-title">Thèmes (clique pour changer)</div>
+    <div class="theme-grid">
+      <button class="theme-btn" data-theme="ink-gold" aria-pressed="true" type="button"><span class="theme-dot" style="background:#0f172a"></span> Ink + Gold</button>
+      <button class="theme-btn" data-theme="sport-red" aria-pressed="false" type="button"><span class="theme-dot" style="background:#eab676"></span> Sport (soft)</button>
+      <button class="theme-btn" data-theme="electric-blue" aria-pressed="false" type="button"><span class="theme-dot" style="background:#67bed9"></span> Electric (soft)</button>
+      <button class="theme-btn" data-theme="graphite-copper" aria-pressed="false" type="button"><span class="theme-dot" style="background:#b45309"></span> Graphite + Copper</button>
+    </div>
+  </div>
+
   <script>
     function toggleMenu(){
-      const el = document.getElementById("navMenu");
-      if(el) el.classList.toggle("active");
+      document.getElementById("navMenu").classList.toggle("active");
     }
+
+    (function(){
+      const root = document.documentElement;
+      const buttons = document.querySelectorAll('.theme-btn');
+      const KEY = 'jc_theme';
+
+      function applyTheme(theme){
+        root.setAttribute('data-theme', theme);
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.theme === theme)));
+        try{ localStorage.setItem(KEY, theme); }catch(e){}
+      }
+
+      let saved = null;
+      try{ saved = localStorage.getItem(KEY); }catch(e){}
+      if(saved){ applyTheme(saved); }
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => applyTheme(btn.dataset.theme));
+      });
+    })();
   </script>
+
 </body>
 </html>
