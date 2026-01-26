@@ -1,104 +1,675 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Je Conduis — Accueil</title>
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Je Conduis - Neuf : Réparations, Assurance, Achat & Vente</title>
+  <meta name="description" content="Je Conduis : Réparations, assurance, achat et vente de voitures neuves, essais et nouveautés.">
+  <meta name="theme-color" content="#062b16">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&family=Roboto:wght@500&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="./assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#062b16;
+      --secondary:#4A7C59;
+      --gold:#D4AF37;
+      --bg:#FFFFFF;
+      --bg-soft:#F6F7F8;
+      --text:#1F2328;
+      --muted:#5B6672;
+      --border:#E7EAEE;
+      --shadow: 0 12px 40px rgba(0,0,0,.10);
+      --radius:14px;
+      --container:1200px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Open Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+
+    .topbar{
+      background:linear-gradient(135deg,#F0F8F0,#E8F5E8);
+      color:var(--primary);
+      border-bottom:2px solid var(--secondary);
+      padding:.75rem 1rem;
+      text-align:center;
+      font-size:.95rem;
+    }
+
+    /* Logo au-dessus du menu */
+    .logo-section{
+      background:var(--primary);
+      padding:1.8rem 0 2rem;
+      text-align:center;
+      position:relative;
+    }
+    .logo-section:after{
+      content:"";
+      position:absolute;left:0;right:0;bottom:0;height:4px;
+      background:linear-gradient(90deg,var(--secondary),var(--gold),var(--secondary));
+    }
+    .container{max-width:var(--container);margin:0 auto;padding:0 1.25rem}
+    .brand{
+      display:inline-block;
+      color:#fff;
+    }
+    .brand-title{
+      font-family:"Roboto Condensed",sans-serif;
+      font-weight:900;
+      font-size:3.2rem;
+      letter-spacing:-1.5px;
+      line-height:1;
+    }
+    .brand-tagline{
+      margin-top:.35rem;
+      color:rgba(255,255,255,.92);
+      font-style:italic;
+      font-size:1.05rem;
+    }
+
+    /* Menu sous le logo */
+    .nav-wrap{
+      background:#fff;
+      position:sticky;
+      top:0;
+      z-index:50;
+      box-shadow:0 2px 12px rgba(6,43,22,.10);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.9rem 0;
+    }
+    .nav-menu{
+      display:flex;
+      list-style:none;
+      gap:.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+      font-family:"Roboto Condensed",sans-serif;
+      font-weight:700;
+    }
+    .nav-menu a{
+      display:inline-block;
+      color:var(--primary);
+      padding:.55rem .9rem;
+      border-radius:999px;
+      transition:.2s ease;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+    .nav-menu a:hover{
+      background:var(--primary);
+      color:#fff;
+    }
+    .nav-cta{
+      display:flex;
+      gap:.6rem;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      padding:.55rem .95rem;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--primary);
+      font-weight:700;
+      font-family:"Roboto Condensed",sans-serif;
+      cursor:pointer;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+    .btn.primary{
+      background:var(--gold);
+      border-color:var(--gold);
+      color:var(--primary);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .burger{
+      display:none;
+      width:42px;height:38px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+    }
+    .burger span{width:20px;height:2px;background:var(--primary);display:block}
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),
+        url("https://via.placeholder.com/1920x700/F6F7F8/062b16?text=JE+CONDUIS+-+HERO") center/cover;
+      padding:3.2rem 0;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.6fr .9fr;
+      gap:2rem;
+      align-items:stretch;
+    }
+    .hero-card{
+      background:var(--bg);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .hero-media{
+      height:320px;
+      background:url("https://via.placeholder.com/1200x700/FFFFFF/062b16?text=Article+%C3%80+la+une+(Neuf)") center/cover;
+    }
+    .hero-content{padding:1.6rem 1.6rem 1.8rem}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      background:var(--primary);
+      color:#fff;
+      border-radius:999px;
+      padding:.28rem .7rem;
+      font-size:.85rem;
+      font-weight:700;
+      font-family:"Roboto Condensed",sans-serif;
+    }
+    .hero-title{
+      font-family:"Roboto Condensed",sans-serif;
+      font-weight:900;
+      font-size:2.1rem;
+      line-height:1.2;
+      margin-top:.9rem;
+    }
+    .meta{color:var(--secondary);font-weight:700;margin-top:.7rem;font-size:.95rem}
+    .lead{color:var(--muted);margin-top:.7rem}
+
+    .side-panel{
+      background:var(--bg-soft);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:1.4rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+    }
+    .side-title{
+      font-family:"Roboto Condensed",sans-serif;
+      font-weight:900;
+      font-size:1.35rem;
+      color:var(--primary);
+      margin-bottom:1rem;
+    }
+    .live-item{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.9rem 0;
+      border-top:1px solid rgba(74,124,89,.18);
+    }
+    .live-item:first-of-type{border-top:none;padding-top:0}
+    .live-time{
+      color:var(--secondary);
+      font-weight:700;
+      font-family:"Roboto Condensed",sans-serif;
+      white-space:nowrap;
+    }
+    .live-text{color:var(--text);font-weight:600}
+
+    /* Sections articles */
+    .section{padding:3.4rem 0}
+    .section.alt{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:1rem;
+      margin-bottom:1.3rem;
+    }
+    .h2{
+      font-family:"Roboto Condensed",sans-serif;
+      font-weight:900;
+      font-size:2rem;
+      color:var(--primary);
+      position:relative;
+    }
+    .h2:after{
+      content:"";
+      display:block;
+      width:64px;height:4px;
+      background:var(--secondary);
+      margin-top:.55rem;
+      border-radius:6px;
+    }
+    .seeall{
+      color:var(--secondary);
+      font-weight:800;
+      font-family:"Roboto Condensed",sans-serif;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.2rem;
+    }
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:.2s ease;
+      position:relative;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(6,43,22,.12);border-color:rgba(6,43,22,.25)}
+    .card-media{
+      height:170px;
+      background:#eaeef2;
+      background-size:cover;
+      background-position:center;
+    }
+    .card-body{padding:1.1rem 1.1rem 1.2rem}
+    .card-kicker{
+      color:var(--secondary);
+      font-weight:800;
+      font-family:"Roboto Condensed",sans-serif;
+      font-size:.95rem;
+    }
+    .card-title{
+      margin-top:.35rem;
+      font-weight:800;
+      font-size:1.15rem;
+      line-height:1.25;
+      color:var(--text);
+    }
+    .card-desc{margin-top:.55rem;color:var(--muted);font-size:.98rem}
+
+    /* Footer */
+    footer{
+      background:#141617;
+      color:#E6E6E6;
+      padding:3rem 0;
+      margin-top:1rem;
+    }
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:.9rem 1.1rem;
+      list-style:none;
+      margin-bottom:1.3rem;
+    }
+    .footer-links a{
+      border:1px solid rgba(255,255,255,.18);
+      padding:.55rem .9rem;
+      border-radius:999px;
+      color:#E6E6E6;
+      font-weight:700;
+      font-family:"Roboto Condensed",sans-serif;
+    }
+
+    /* Mobile */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 720px){
+      .brand-title{font-size:2.4rem}
+      .nav-menu{display:none}
+      .nav-menu.active{
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        position:absolute;
+        left:0;right:0;
+        top:100%;
+        background:#fff;
+        border-bottom:1px solid var(--border);
+        padding:1rem 1.25rem;
+      }
+      .nav{position:relative}
+      .burger{display:flex}
+      .grid{grid-template-columns:1fr}
+      .hero-title{font-size:1.75rem}
+      .hero-media{height:240px}
+    }
+  </style>
 </head>
+
 <body>
-  <header>
+  <div class="topbar">
+    Guides 100% neuf : réparations, assurance, achat & vente — essais et nouveautés 2026.
+  </div>
+
+  <!-- LOGO AU-DESSUS DU MENU -->
+  <section class="logo-section">
     <div class="container">
-      <div class="nav">
-        <a class="brand" href="./index.html"><span class="logo-dot"></span><span>Je Conduis</span></a>
-        <nav>
-          <ul>
-            <li><a href="./reparations/index.html">Réparations</a></li>
-            <li><a href="#">Assurance</a></li>
-            <li><a href="#">Achat</a></li>
-            <li><a href="#">Vente</a></li>
-            <li><a href="#">Location</a></li>
-            <li><a href="./economies/index.html">Économies</a></li>
-            <li><a href="#">Nouveautés</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a class="nav-cta" href="./reparations/vidange.html">Checklist VO</a></li>
-          </ul>
-        </nav>
-      </div>
+      <a class="brand" href="index.html" aria-label="Accueil Je Conduis">
+        <div class="brand-title">Je Conduis</div>
+        <div class="brand-tagline">Le guide français du neuf</div>
+      </a>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <div class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <img alt="Hero éco automobile" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%230EA5E9'/><stop offset='0.55' stop-color='%2310B981'/><stop offset='1' stop-color='%23111827'/></linearGradient></defs><rect width='1600' height='900' fill='url(%23g)'/><text x='60' y='120' font-family='Inter, Arial' font-size='44' fill='%23FFFFFF' opacity='0.9'>Je Conduis — Démo</text></svg>" />
-          <div class="hero-overlay"></div>
+  <!-- MENU (vos catégories) -->
+  <div class="nav-wrap">
+    <div class="container">
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="reparations.html">Réparations</a></li>
+          <li><a href="assurance.html">Assurance</a></li>
+          <li><a href="achat.html">Achat</a></li>
+          <li><a href="vente.html">Vente</a></li>
+          <li><a href="essais.html">Essais</a></li>
+          <li><a href="nouveautes.html">Nouveautés</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a class="btn" href="newsletter.html">Newsletter</a>
+          <a class="btn primary" href="abonnement.html">S’abonner</a>
+          <button class="burger" type="button" aria-label="Ouvrir le menu" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO + FIL D’INFOS -->
+  <section class="hero" id="accueil">
+    <div class="container">
+      <div class="hero-grid">
+        <article class="hero-card">
+          <div class="hero-media" role="img" aria-label="Image article à la une"></div>
           <div class="hero-content">
-            <h1 class="hero-title">Économise sur ta voiture, sans sacrifier la sécurité</h1>
-            <p class="hero-sub">Guides pratiques, conseils d'experts et bons plans pour entretenir ton auto intelligemment.</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn btn-primary" href="./reparations/vidange.html">Voir Article Vidange</a>
-              <a class="btn btn-ghost" href="./economies/index.html">Bons plans</a>
-            </div>
+            <span class="badge">À LA UNE</span>
+            <h1 class="hero-title">Voitures neuves 2026 : ce qui change (prix, aides, fiscalité)</h1>
+            <div class="meta">Achat • Mis à jour aujourd’hui</div>
+            <p class="lead">Un décryptage clair pour acheter neuf : motorisations, équipements, délais, financement et pièges à éviter.</p>
           </div>
-        </div>
+        </article>
+
+        <aside class="side-panel" aria-label="Fil d’infos">
+          <div class="side-title">Fil d’infos</div>
+          <div class="live-item">
+            <div class="live-time">12:10</div>
+            <div class="live-text">Nouveauté : présentation d’un nouveau SUV électrique.</div>
+          </div>
+          <div class="live-item">
+            <div class="live-time">11:30</div>
+            <div class="live-text">Assurance : hausse des tarifs, comment comparer.</div>
+          </div>
+          <div class="live-item">
+            <div class="live-time">10:55</div>
+            <div class="live-text">Réparations : pièces & main-d’œuvre, comment payer moins.</div>
+          </div>
+          <div class="live-item">
+            <div class="live-time">09:40</div>
+            <div class="live-text">Essais : notre prise en main d’une citadine 2026.</div>
+          </div>
+        </aside>
       </div>
     </div>
+  </section>
 
-    <section>
-      <div class="container">
-        <div class="section-title">
-          <h2>Derniers articles</h2>
-          <p>Conseils pratiques et guides complets</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <img alt="Vidange" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'><defs><linearGradient id='a' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2310B981'/><stop offset='1' stop-color='%230EA5E9'/></linearGradient></defs><rect width='1200' height='700' fill='url(%23a)'/><text x='80' y='170' font-family='Inter, Arial' font-size='44' fill='%23FFFFFF'>Vidange</text></svg>" />
-            <div class="card-body">
-              <span class="tag">Réparations</span>
-              <h3><a href="./reparations/vidange.html">Vidange maison : guide éco et sécurisé</a></h3>
-              <p>Économise 80€ en 30 minutes. Tout le matériel, étapes détaillées et pièges à éviter.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img alt="Économies" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'><rect width='1200' height='700' fill='%23FCD34D'/><text x='80' y='170' font-family='Inter, Arial' font-size='44' fill='%23111827'>Économies</text></svg>" />
-            <div class="card-body">
-              <span class="tag">Bons plans</span>
-              <h3><a href="./economies/index.html">Réduire son budget auto : 10 idées</a></h3>
-              <p>Codes promo, comparateurs de garages et astuces pour économiser 300€/an.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <img alt="Assurance" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'><rect width='1200' height='700' fill='%230EA5E9'/><text x='80' y='170' font-family='Inter, Arial' font-size='44' fill='%23FFFFFF'>Assurance</text></svg>" />
-            <div class="card-body">
-              <span class="tag">Assurance</span>
-              <h3><a href="#">Comparer les garanties sans se faire piéger</a></h3>
-              <p>Franchise, tous risques ou tiers : comprendre pour économiser.</p>
-            </div>
-          </article>
-        </div>
+  <!-- NOUVEAUTÉS -->
+  <section class="section" id="nouveautes">
+    <div class="container">
+      <div class="section-head">
+        <div class="h2">Nouveautés</div>
+        <a class="seeall" href="nouveautes.html">Voir tout</a>
       </div>
-    </section>
-  </main>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Nouveaut%C3%A9+1');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Nouveautés</div>
+            <div class="card-title">Nouveau SUV : ce qu’il faut retenir (motorisations, finitions)</div>
+            <div class="card-desc">Prix, options indispensables et équipements de série.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Nouveaut%C3%A9+2');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Nouveautés</div>
+            <div class="card-title">Citadine 2026 : autonomie/consommation, notre verdict</div>
+            <div class="card-desc">Ce qui progresse vraiment sur la nouvelle génération.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Nouveaut%C3%A9+3');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Nouveautés</div>
+            <div class="card-title">Hybridation : les nouveautés attendues cette année</div>
+            <div class="card-desc">Mild-hybrid, full-hybrid, PHEV : comment choisir en neuf.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESSAIS -->
+  <section class="section alt" id="essais">
+    <div class="container">
+      <div class="section-head">
+        <div class="h2">Essais</div>
+        <a class="seeall" href="essais.html">Voir tout</a>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Essai+1');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Essais</div>
+            <div class="card-title">Essai : compacte 2026 (confort, bruit, conso)</div>
+            <div class="card-desc">Ce qu’on aime, ce qu’on regrette, et pour qui c’est fait.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Essai+2');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Essais</div>
+            <div class="card-title">Prise en main : électrique 2026 (recharge, autonomie réelle)</div>
+            <div class="card-desc">Nos mesures sur route et sur autoroute, version neuve.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Essai+3');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Essais</div>
+            <div class="card-title">SUV familial : tenue de route, coffre, vie à bord</div>
+            <div class="card-desc">Le bon choix en neuf selon usage et budget.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHAT (NEUF UNIQUEMENT) -->
+  <section class="section" id="achat">
+    <div class="container">
+      <div class="section-head">
+        <div class="h2">Achat (neuf)</div>
+        <a class="seeall" href="achat.html">Voir tout</a>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Achat+Neuf+1');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Achat</div>
+            <div class="card-title">Configurer sa voiture neuve : options utiles vs gadgets</div>
+            <div class="card-desc">Sécurité, confort, aides à la conduite : quoi cocher.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Achat+Neuf+2');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Achat</div>
+            <div class="card-title">Financement neuf : LOA, LLD, crédit — comment trancher</div>
+            <div class="card-desc">Comparaison simple : coût total, contraintes, pièges.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Achat+Neuf+3');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Achat</div>
+            <div class="card-title">Livraison : délais, documents, check-list avant de signer</div>
+            <div class="card-desc">Contrôles indispensables sur un véhicule neuf.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTE (NEUF : offres, mandataires, concessions) -->
+  <section class="section alt" id="vente">
+    <div class="container">
+      <div class="section-head">
+        <div class="h2">Vente (neuf)</div>
+        <a class="seeall" href="vente.html">Voir tout</a>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Vente+Neuf+1');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Vente</div>
+            <div class="card-title">Remises : comment négocier une voiture neuve en 2026</div>
+            <div class="card-desc">Timing, stock, fin de trimestre : les bons leviers.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Vente+Neuf+2');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Vente</div>
+            <div class="card-title">Mandataire vs concession : quelle différence en neuf</div>
+            <div class="card-desc">Garantie, SAV, prix : ce qui compte vraiment.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=Vente+Neuf+3');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Vente</div>
+            <div class="card-title">Extension de garantie : quand ça vaut le coup</div>
+            <div class="card-desc">À acheter (ou refuser) lors d’une vente de neuf.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSURANCE -->
+  <section class="section" id="assurance">
+    <div class="container">
+      <div class="section-head">
+        <div class="h2">Assurance</div>
+        <a class="seeall" href="assurance.html">Voir tout</a>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Assurance+1');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Assurance</div>
+            <div class="card-title">Tous risques vs tiers : le bon choix pour une voiture neuve</div>
+            <div class="card-desc">Garanties utiles en neuf : bris de glace, valeur à neuf, etc.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Assurance+2');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Assurance</div>
+            <div class="card-title">Franchise : comment elle change la facture</div>
+            <div class="card-desc">Exemples et conseils pour éviter les mauvaises surprises.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/F6F7F8/062b16?text=Assurance+3');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Assurance</div>
+            <div class="card-title">Assurance + LOA/LLD : points de vigilance</div>
+            <div class="card-desc">Ce qu’il faut vérifier pour rester couvert correctement.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RÉPARATIONS -->
+  <section class="section alt" id="reparations">
+    <div class="container">
+      <div class="section-head">
+        <div class="h2">Réparations</div>
+        <a class="seeall" href="reparations.html">Voir tout</a>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=R%C3%A9parations+1');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Réparations</div>
+            <div class="card-title">Révision d’un véhicule neuf : quand et combien</div>
+            <div class="card-desc">Les bases : carnet, constructeur, entretien préventif.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=R%C3%A9parations+2');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Réparations</div>
+            <div class="card-title">Garantie constructeur : ce qui est couvert (ou non)</div>
+            <div class="card-desc">Bonnes pratiques pour éviter une exclusion de garantie.</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media" style="background-image:url('https://via.placeholder.com/900x600/FFFFFF/4A7C59?text=R%C3%A9parations+3');"></div>
+          <div class="card-body">
+            <div class="card-kicker">Réparations</div>
+            <div class="card-title">Pneus, freins, batteries : les coûts à anticiper</div>
+            <div class="card-desc">Le “vrai” budget annuel d’une voiture neuve.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
-      <div class="footer-grid">
-        <div>© 2026 — Je Conduis (démo)</div>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="#">Mentions</a><a href="#">Contact</a><a href="#">YouTube</a>
-        </div>
+      <ul class="footer-links">
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="politique-cookies.html">Cookies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cgu.html">CGU</a></li>
+        <li><a href="plan-du-site.html">Plan du site</a></li>
+      </ul>
+      <div style="text-align:center;opacity:.9;">
+        © 2026 Je Conduis — Contenu orienté voitures neuves (réparations, assurance, achat/vente, essais, nouveautés).
       </div>
     </div>
   </footer>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById("navMenu").classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
